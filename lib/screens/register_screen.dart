@@ -115,11 +115,12 @@ class RegisterScreen extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                         primary: Color.fromRGBO(227, 58, 61, 1),
                         padding: EdgeInsets.symmetric(
-                            horizontal: _screenWidth * 0.2),
+                          horizontal: _screenWidth * 0.2,
+                        ),
                       ),
                       child: Text('Sign up'),
                       onPressed: () {
-                        return Navigator.of(context).push(
+                        return Navigator.of(context).pushReplacement(
                           MaterialPageRoute(
                             builder: (_) => HomeScreen(),
                           ),
