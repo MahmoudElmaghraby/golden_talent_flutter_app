@@ -2,7 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:golden_talent/screens/nav_screen.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:golden_talent/widgets/footer.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -16,10 +16,6 @@ class _HomeScreenState extends State<HomeScreen> {
     'assets/images/img2.jpeg',
     'assets/images/img3.jpg',
   ];
-
-  static const _fbLink = 'https://www.facebook.com/ChangeYourLive.1/';
-  static const _twitterLink = '';
-  static const _linkedInLink = '';
 
   @override
   Widget build(BuildContext context) {
@@ -57,68 +53,15 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             SizedBox(height: _screenHeight * 0.0211), //16
-            Container(
-              padding: EdgeInsets.all(8.0),
-              width: _screenWidth,
-              color: Colors.black,
-              child: Column(
-                children: [
-                  Text(
-                    'Golden Talent',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 25.0,
-                    ),
-                  ),
-                  Text(
-                    '" Change your life "',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20.0,
-                    ),
-                  ),
-                  SizedBox(height: _screenHeight * 0.0111),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      InkWell(
-                        child: Image.asset(
-                          'assets/images/fb_icon.png',
-                          width: 25,
-                          height: 25,
-                        ),
-                        onTap: _launchURL,
-                        //   return launch('https://www.facebook.com/ChangeYourLive.1/');
-                      ),
-                      SizedBox(width: _screenHeight * 0.0105), //8
-                      Image.asset(
-                        'assets/images/twitter_icon.png',
-                        width: 25,
-                        height: 25,
-                      ),
-                      SizedBox(width: _screenHeight * 0.0105), //8
-                      Image.asset(
-                        'assets/images/linkedIn_icon.png',
-                        width: 25,
-                        height: 25,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+            //     buildFooter(_screenWidth, _screenHeight),
+            Footer(
+              screenWidth: _screenWidth,
+              screenHeight: _screenHeight,
             ),
           ],
         ),
       ),
     );
-  }
-
-  _launchURL() async {
-    if (await canLaunch(_fbLink)) {
-      await launch(_fbLink);
-    } else {
-      throw 'Could not launch $_fbLink';
-    }
   }
 
   Card _buildCourseCard(double _screenHeight, double _screenWidth) {
